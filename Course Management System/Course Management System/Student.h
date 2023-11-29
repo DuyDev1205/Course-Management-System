@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Person.h"
 #include <list>
 #include<fstream>
@@ -19,6 +19,7 @@ public:
 	void addStudent(Student stu);
 	void deleteStudent(const string& studentIdToDelete);
 	void getViewStudentFromFile();
-	//void sortStudents();
+	Student* searchStudentId(const string& studentId);
+	void clearStudentList();
 };	
 

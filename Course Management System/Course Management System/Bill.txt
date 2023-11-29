@@ -1,0 +1,6 @@
+ID:1
+CustomerName:1
+Date:1
+TotalAmount:1
+
+

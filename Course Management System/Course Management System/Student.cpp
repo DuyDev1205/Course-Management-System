@@ -26,8 +26,8 @@ void Student::readFile(const string& fileName)
         string studentID, name, address, phone, majors, grades;
 
         while (getline(inputFile, line)) {
-            if (line.find("StudentID:") == 0) {
-                studentID = line.substr(11);
+            if (line.find("ID:") == 0) {
+                studentID = line.substr(4);
             }
             else if (line.find("Name:") == 0) {
                 name = line.substr(6);
@@ -48,7 +48,6 @@ void Student::readFile(const string& fileName)
         }
 
         inputFile.close();
-        getViewStudent();
     }
     else {
         cout << "Can't read file!" << endl;
@@ -73,7 +72,7 @@ bool Student::writeFile(Student stu)
 
 void Student::getViewStudent()
 {
-    cout << "List of students in School";
+    cout << "List of students in School\n";
     for (auto& stu : this->studentList) {
         cout << stu.toString()<<"\n\n";
     }
@@ -84,7 +83,7 @@ void Student::addStudent(Student stu)
     cout << "Please! Fill down infomation of author that you want to add in system.\n\n";
     string studentID, name, address, phone, majors, grades;
 
-    cout << "Student ID:";
+    cout << "ID:";
     cin.ignore();
     getline(cin, studentID);
 
@@ -117,7 +116,7 @@ void Student::deleteStudent(const string& studentIDToDelete)
 
         // Đọc từng dòng và ghi vào file tạm
         while (getline(inputFile, line)) {
-            if (line.find("StudentID: " + studentIDToDelete) != string::npos) {
+            if (line.find("ID: " + studentIDToDelete) != string::npos) {
                 // Bỏ qua và không ghi dòng chứa StudentID cần xóa
                 while (getline(inputFile, line) && !line.empty()) {
                     // Bỏ qua dòng
@@ -137,7 +136,7 @@ void Student::deleteStudent(const string& studentIDToDelete)
         remove("Student.txt");
 
         // Đổi tên file tạm thành tên file gốc
-        rename("TempFile.txt", "Student.txt");
+        (void)rename("TempFile.txt", "Student.txt");
         system("cls");
         getViewStudentFromFile();
     }
@@ -165,11 +164,20 @@ void Student::getViewStudentFromFile()
         cerr << "Can't open input file." << endl;
     }
 }
-//bool compareStudents(const Student& stu1, const Student& stu2) {
-//    return stu1.getID() < stu2.getID(); // Giả sử bạn có một phương thức getID trong lớp Student
-//}
-//void Student::sortStudents()
-//{
-//    studentList.sort();
-//}
+
+Student* Student::searchStudentId(const string& studentId)
+{
+    for (auto& stu : studentList) {
+        if (stu.getID() == studentId) {
+            return &stu; // Trả về con trỏ đến sinh viên nếu tìm thấy
+        }
+    }
+    return nullptr; // Trả về nullptr nếu không tìm thấy
+}
+
+void Student::clearStudentList()
+{
+    studentList.clear();
+}
+
 

@@ -10,7 +10,7 @@ Person::Person(string id, string name, string address, string phoneNumber)
 
 string Person::toString()
 {
-	return "StudentID: " + this->id
+	return "ID: " + this->id
 		+ "\nName: " + this->name
 		+ "\nAddress: " + this->address
 		+ "\nPhone: " + this->phoneNumber;
