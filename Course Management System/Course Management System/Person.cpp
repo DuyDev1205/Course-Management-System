@@ -35,3 +35,23 @@ string Person::getPhoneNumber()
 {
 	return this->phoneNumber;
 }
+
+void Person::setID(string newID)
+{
+	this->id = newID;
+}
+
+void Person::setName(string newName)
+{
+	this->name = newName;
+}
+
+void Person::setAddress(string newAddress)
+{
+	this->address = newAddress;
+}
+
+void Person::setPhoneNumber(string newPhoneNumber)
+{
+	this->phoneNumber = newPhoneNumber;
+}

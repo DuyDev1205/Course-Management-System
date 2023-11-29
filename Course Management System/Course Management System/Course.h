@@ -8,7 +8,7 @@ class Course
 private:
 	string courseID;
 	string name;
-	string profressor;	
+	string profressor;
 	int maxCapacity;
 	list<Course> enrolledStudents;
 	string schedule;
@@ -21,7 +21,7 @@ public:
 	void viewCourseDetails();
 	void enrollStudent(int studentID);
 	void withdrawStudent(int studentID);
-    void listEnrolledStudents();
+	void listEnrolledStudents();
 	void viewSchedule();
 	string toString();
 };

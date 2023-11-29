@@ -1,2 +1,8 @@
-﻿  Student.cpp
-  Course Management System.vcxproj -> D:\Visual Studio\Source Code\LapTrinhNangCao\Course Management System\x64\Debug\Course Management System.exe
+﻿  Course Management System.cpp
+  Course.cpp
+  Person.cpp
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\format(42): warning STL4038: The contents of <format> are available only with C++20 or later.
+  Student.cpp
+  Teacher.cpp
+  Generating Code...
+LINK : fatal error LNK1104: cannot open file 'D:\GitLab\Course-Management-System\Course Management System\x64\Debug\Course Management System.exe'

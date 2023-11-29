@@ -3,7 +3,7 @@
 #include <list>
 #include<fstream>
 class Student :
-    public Person
+	public Person
 {
 private:
 	string majors;
@@ -11,9 +11,14 @@ private:
 	list<Student> studentList;
 public:
 	Student(string majors, string grades, Person p);
+	Student() = default;
 	string toString();
 	void readFile(const string& fileName);
 	bool writeFile(Student stu);
 	void getViewStudent();
-};
+	void addStudent(Student stu);
+	void deleteStudent(const string& studentIdToDelete);
+	void getViewStudentFromFile();
+	//void sortStudents();
+};	
 
