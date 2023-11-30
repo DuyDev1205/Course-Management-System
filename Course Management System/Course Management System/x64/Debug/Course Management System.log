@@ -1,2 +1,7 @@
-﻿  Bill.cpp
-  Course Management System.vcxproj -> D:\GitLab\Course-Management-System\Course Management System\x64\Debug\Course Management System.exe
+﻿  Assignment.cpp
+  Bill.cpp
+D:\KyThuatLapTrinhNangCao\kt\Course-Management-System\Course Management System\Course Management System\Bill.cpp(10,12): error C2011: 'Bill': 'class' type redefinition
+D:\KyThuatLapTrinhNangCao\kt\Course-Management-System\Course Management System\Course Management System\Bill.h(9,7): message : see declaration of 'Bill'
+  Department.cpp
+  Enrollment.cpp
+  Generating Code...

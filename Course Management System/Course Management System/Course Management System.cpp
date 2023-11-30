@@ -255,7 +255,7 @@ int main()
                 MenuFunction(choicef, "Bill");
                 switch (choicef)
                 {
-                /*case 1:
+                case 1:
                     bill.addBill();
                     system("cls");
                     bill.billClearList();
@@ -270,14 +270,14 @@ int main()
                     cout << "Type BillID you want to delete: ";
                     cin >> billId;
                     bill.deleteBill(billId);
-                    break;*/
+                    break;
                 case 3:
                     system("cls");
                     bill.billClearList();
                     bill.readFile("Bill.txt");
                     bill.getViewBill();
                     break;
-                /*case 4:
+                case 4:
                     system("cls");
                     bill.billClearList();
                     bill.readFile("Bill.txt");
@@ -295,7 +295,7 @@ int main()
                     {
                         cout << "No Bill found with BillID as " << billId << "\n";
                     }
-                    break;*/
+                    break;
                 }
 
                 cout << "Select the option:" << endl;
@@ -305,6 +305,7 @@ int main()
 
             break;
         }
+
         }
     }
     return 0;
