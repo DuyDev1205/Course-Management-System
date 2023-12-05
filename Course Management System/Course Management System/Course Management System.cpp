@@ -268,7 +268,7 @@ int main()
                     bill.readFile("Bill.txt");
                     bill.getViewBill();
                     cout << "Type BillID you want to delete: ";
-                    cin >> billId;
+                    cin >> billId; 
                     bill.deleteBill(billId);
                     break;
                 case 3:
@@ -305,7 +305,6 @@ int main()
 
             break;
         }
-
         }
     }
     return 0;

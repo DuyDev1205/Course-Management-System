@@ -4,3 +4,8 @@ Date:1
 TotalAmount:1
 
 
+ID:2
+CustomerName:2
+Date:2
+TotalAmount:2
+

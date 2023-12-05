@@ -33,13 +33,7 @@
     <ClCompile Include="DateTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Enrollment.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Department.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Assignment.cpp">
+    <ClCompile Include="Bill.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,13 +53,7 @@
     <ClInclude Include="DateTime.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Enrollment.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Department.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Assignment.h">
+    <ClInclude Include="Bill.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
