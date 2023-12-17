@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Assignment.cpp" />
     <ClCompile Include="Bill.cpp" />
     <ClCompile Include="Course Management System.cpp" />
     <ClCompile Include="Course.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assignment.h" />
     <ClInclude Include="Bill.h" />
     <ClInclude Include="Course.h" />
     <ClInclude Include="DateTime.h" />

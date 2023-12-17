@@ -7,6 +7,7 @@
 #include "Teacher.h"
 #include "Course.h"
 #include "Bill.h"
+#include "Assignment.h"
 using namespace std;
 void Menu(int& choice)
 {
@@ -15,6 +16,7 @@ void Menu(int& choice)
     cout << "2. Teacher\n";
     cout << "3. Course\n";
     cout << "4. Receiption\n";
+    cout << "5. Assignment\n";
     cout << "0. Exit\n";
     cout << "====================\n";
     cout << "Choose function: ";
@@ -39,7 +41,7 @@ void MenuFunction(int& choicef,string role)
         cout << "======= Menu =======\n";
         cout << "1. Add\n";
         cout << "2. Delete by TeacherID\n";
-        cout << "3. GetAll\n";
+        cout << "3. ViewAll\n";
         cout << "4. Search\n";
         cout << "0. Exit\n";
         cout << "====================\n";
@@ -51,7 +53,7 @@ void MenuFunction(int& choicef,string role)
         cout << "======= Menu =======\n";
         cout << "1. Add\n";
         cout << "2. Delete by CourseID\n";
-        cout << "3. GetAll\n";
+        cout << "3. ViewAll\n";
         cout << "4. Search\n";
         cout << "0. Exit\n";
         cout << "====================\n";
@@ -63,6 +65,18 @@ void MenuFunction(int& choicef,string role)
         cout << "======= Menu =======\n";
         cout << "1. Add\n";
         cout << "2. Delete by BillID\n";
+        cout << "3. ViewAll\n";
+        cout << "4. Search\n";
+        cout << "0. Exit\n";
+        cout << "====================\n";
+        cout << "Choose function: ";
+        cin >> choicef;
+    }
+    else if (role == "Assignment")
+    {
+        cout << "======= Menu =======\n";
+        cout << "1. Add Assignment for Student\n";
+        cout << "2. Delete Assignment by TaskID\n";
         cout << "3. GetAll\n";
         cout << "4. Search\n";
         cout << "0. Exit\n";
@@ -80,8 +94,9 @@ int main()
     Teacher teach;
     Course course;
     Bill bill;
+    Assignment assign;
     int choice, choicef,selection;
-    string studentId,teacherId,courseId,billId;
+    string studentId,teacherId,courseId,billId,taskId;
     Menu(choice);
     switch (choice)
     {
@@ -97,13 +112,13 @@ int main()
                     system("cls");
                     st.addStudent(st);
                     system("cls");
-                    st.clearStudentList(); // Xóa dữ liệu hiện tại
+                    st.clearStudentList(); 
                     st.readFile("Student.txt");
                     st.getViewStudent();
                     break;
                 case 2:
                     system("cls");
-                    st.clearStudentList(); // Xóa dữ liệu hiện tại
+                    st.clearStudentList(); 
                     st.readFile("Student.txt");
                     st.getViewStudent();
                     cout << "Type StudentID you want to delete: ";
@@ -112,13 +127,13 @@ int main()
                     break;
                 case 3:
                     system("cls");
-                    st.clearStudentList(); // Xóa dữ liệu hiện tại
+                    st.clearStudentList(); 
                     st.readFile("Student.txt");
                     st.getViewStudent();
                     break;
                 case 4:
                     system("cls");
-                    st.clearStudentList(); // Xóa dữ liệu hiện tại
+                    st.clearStudentList(); 
                     st.readFile("Student.txt");
                     st.getViewStudent();
                     cout << "Type StudentID you want to search: ";
@@ -304,6 +319,61 @@ int main()
             } while (selection == 1);
 
             break;
+        }
+        case 5:
+        {
+            do
+            {
+                system("cls");
+                MenuFunction(choicef, "Assignment");
+                switch (choicef)
+                {
+                case 1:
+                    system("cls");
+                    assign.inputAssignment(assign);
+                    assign.assignmentClearList();
+                    assign.readFile("Assignment.txt");
+                    assign.getViewAssignment();
+                    break;
+                case 2:
+                    system("cls");
+                    assign.assignmentClearList();
+                    assign.readFile("Assignment.txt");
+                    assign.getViewAssignment();
+                    cout << "Type the Task Id to delete ";
+                    cin >> taskId;
+                    assign.removeAssignment(taskId);
+                    break;
+                case 3:
+                    system("cls");
+                    assign.assignmentClearList();
+                    assign.readFile("Assignment.txt");
+                    assign.getViewAssignment();
+                    break;
+                case 4:
+                    system("cls");
+                    assign.assignmentClearList();
+                    assign.readFile("Assignment.txt");
+                    assign.getViewAssignment();
+                    cout << "Type the task ID you want to search ";
+                    cin >> taskId;
+                    Assignment* foundTaskID = assign.searchAssignment(taskId);
+                    system("cls");
+                    if (foundTaskID != nullptr)
+                    {
+                        cout << "Assignment has been found:\n";
+                        cout << foundTaskID->toString() << "\n";
+                    }
+                    else
+                    {
+                        cout << "No Assignment found with BillID as " << taskId << "\n";
+                    }
+                    break;
+                }
+                cout << "Select the option:" << endl;
+                cout << "1.Continue" << endl << "2.Quit" << endl;
+                cin >> selection;
+            } while (selection == 1);
         }
         }
     }

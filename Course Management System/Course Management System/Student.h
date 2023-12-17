@@ -21,5 +21,6 @@ public:
 	void getViewStudentFromFile();
 	Student* searchStudentId(const string& studentId);
 	void clearStudentList();
+	friend class Assignment;
 };	
 
