@@ -110,307 +110,421 @@ int main()
     Management mg;
     int choice, choicef,selection;
     string studentId,teacherId,courseId,billId,taskId;
-    Menu(choice);
-    switch (choice)
+    do
     {
-        case 1:
+        system("cls");
+        try
+        {
+            Menu(choice);
+            if (choice <0 || choice >6) {
+                throw invalid_argument("Invalid Input,Type Again");
+            }
+            switch (choice)
+            {
+            case 1:
                 do
                 {
-                system("cls");
-                st.readFile("Student.txt");
-                MenuFunction(choicef, "Student");
-                switch (choicef)
-                {
-                case 1:
-                    system("cls");
-                    st.clearStudentList(); 
-                    st.readFile("Student.txt");
-                    st.getViewStudent();
-                    break;
-                case 2:
-                    system("cls");
-                    st.clearStudentList(); 
-                    st.readFile("Student.txt");
-                    st.getViewStudent();
-                    cout << "Type StudentID you want to search: ";
-                    cin >> studentId;
-                    st.searchStudentId(studentId);
-
-                    Student* foundStudent = st.searchStudentId(studentId);
-                    system("cls");
-                    if (foundStudent != nullptr) {
-                        cout << "Student has been found:\n";
-                        cout << foundStudent->toString() << "\n";
-                    }
-                    else {
-                        cout << "No student found with StudentId as " << studentId << "\n";
-                    }
-                    break;
-                }
-                cout << "Select the option:"<<endl;
-                cout << "1.Continue"<<endl<<"2.Quit"<<endl;
-                cin >> selection;
-            } while (selection == 1);
-            break;
-        case 2:
-            do {
-                system("cls");
-                MenuFunction(choicef, "Teacher");
-                switch (choicef)
-                {
-                case 1:
-                    system("cls");
-                    teach.clearTeacherList();
-                    teach.readFile("Teacher.txt");
-                    teach.getViewTeacher();
-                    break;
-                case 2:
-                    system("cls");
-                    teach.clearTeacherList();
-                    teach.readFile("Teacher.txt");
-                    teach.getViewTeacher();
-                    cout << "Type TeacherID you want to search: ";
-                    cin >> teacherId;
-                    /*teach.searchTeacherID(teacherId);*/
-
-                    Teacher* foundTeacher = teach.searchTeacherID(teacherId);
-                    system("cls");
-                    if (foundTeacher != nullptr) {
-                        cout << "Teacher has been found:\n";
-                        cout << foundTeacher->toString() << "\n"; 
-                    }
-                    else {
-                        cout << "No teacher found with TeacherId as " << teacherId << "\n";
-                    }
-                    break;
-                }
-                cout << "Select the option:" << endl;
-                cout << "1.Continue" << endl << "2.Quit" << endl;
-                cin >> selection;
-            }
-            while (selection == 1);
-            break;
-        case 3:
-        {
-            do
-            {
-                system("cls");
-                MenuFunction(choicef, "Course");         
-                switch (choicef)
-                {
-                    case 1:
-                        course.addCourse();
+                    try
+                    {
                         system("cls");
-                        course.courseClearList();
-                        course.readFile("Course.txt");
-                        course.getViewCourse();
+                        st.readFile("Student.txt");
+                        MenuFunction(choicef, "Student");
+                        if (choicef == 0)
+                        {
+                            break;
+                        }
+                        if (choicef < 1 || choicef >2) {
+                            throw invalid_argument("Invalid Input,Type Again");
+                        }
+                        switch (choicef)
+                        {
+                        case 1:
+                            system("cls");
+                            st.clearStudentList();
+                            st.readFile("Student.txt");
+                            st.getViewStudent();
+                            break;
+                        case 2:
+                            system("cls");
+                            st.clearStudentList();
+                            st.readFile("Student.txt");
+                            st.getViewStudent();
+                            cout << "Type StudentID you want to search: ";
+                            cin >> studentId;
+                            st.searchStudentId(studentId);
+
+                            Student* foundStudent = st.searchStudentId(studentId);
+                            system("cls");
+                            if (foundStudent != nullptr) {
+                                cout << "Student has been found:\n";
+                                cout << foundStudent->toString() << "\n";
+                            }
+                            else {
+                                cout << "No student found with StudentId as " << studentId << "\n";
+                            }
+                            break;
+                        }
+                    }
+                    catch (const exception& e)
+                    {
+                        cerr << "Error: " << e.what() << endl;
+                        Sleep(3000);
+                        break;
+                    }
+                    cout << "Select the option:" << endl;
+                    cout << "1.Continue" << endl << "2.Quit" << endl;
+                    cin >> selection;
+                } while (selection == 1);
+                break;
+            case 2:
+                do {
+                    try
+                    {
+                    system("cls");
+                    MenuFunction(choicef, "Teacher");
+                    if (choicef == 0)
+                    {
+                        break;
+                    }
+                    if (choicef < 1 || choicef >2) {
+                        throw invalid_argument("Invalid Input,Type Again");
+                    }
+                    switch (choicef)
+                    {
+                    case 1:
+                        system("cls");
+                        teach.clearTeacherList();
+                        teach.readFile("Teacher.txt");
+                        teach.getViewTeacher();
                         break;
                     case 2:
                         system("cls");
-                        course.courseClearList();
-                        course.readFile("Course.txt");
-                        course.getViewCourse();
-                        cout << "Type CourseID you want to delete: ";
-                        cin >> courseId;
-                        course.deleteCourse(courseId);
-                        break;
-                    case 3:
+                        teach.clearTeacherList();
+                        teach.readFile("Teacher.txt");
+                        teach.getViewTeacher();
+                        cout << "Type TeacherID you want to search: ";
+                        cin >> teacherId;
+                        teach.searchTeacherID(teacherId);
+
+                        Teacher* foundTeacher = teach.searchTeacherID(teacherId);
                         system("cls");
-                        course.courseClearList();
-                        course.readFile("Course.txt");
-                        course.getViewCourse();
-                    case 4:system("cls");
-                        course.courseClearList();
-                        course.readFile("Course.txt");
-                        course.getViewCourse();
-                        cout << "Type CourseID you want to search: ";
-                        cin >> courseId;
-                        Course* foundCourseID = course.searchCourseId(courseId);
-                        system("cls");
-                        if (foundCourseID != nullptr) {
-                            cout << "Course has been found:\n";
-                            cout << foundCourseID->toString() << "\n";
+                        if (foundTeacher != nullptr) {
+                            cout << "Teacher has been found:\n";
+                            cout << foundTeacher->toString() << "\n";
                         }
                         else {
-                            cout << "No Course found with CourseId as " << courseId << "\n";
+                            cout << "No teacher found with TeacherId as " << teacherId << "\n";
                         }
                         break;
-                }
-                cout << "Select the option:" << endl;
-                cout << "1.Continue" << endl << "2.Quit" << endl;
-                cin >> selection;
+
+                    }
+                    }
+                    catch (const exception& e)
+                    {
+                        cerr << "Error: " << e.what() << endl;
+                        Sleep(3000);
+                        break;
+                    }   
+                    cout << "Select the option:" << endl;
+                    cout << "1.Continue" << endl << "2.Quit" << endl;
+                    cin >> selection;
+                } while (selection == 1);
+                break;
+            case 3:
+            {
+                do
+                {
+                    try
+                    {
+                        system("cls");
+                        MenuFunction(choicef, "Course");
+                        if (choicef == 0)
+                        {
+                            break;
+                        }
+                        if (choicef < 1 || choicef >4) {
+                            throw invalid_argument("Invalid Input,Type Again");
+                        }
+                        switch (choicef)
+                        {
+                        case 1:
+                            course.addCourse();
+                            system("cls");
+                            course.courseClearList();
+                            course.readFile("Course.txt");
+                            course.getViewCourse();
+                            break;
+                        case 2:
+                            system("cls");
+                            course.courseClearList();
+                            course.readFile("Course.txt");
+                            course.getViewCourse();
+                            cout << "Type CourseID you want to delete: ";
+                            cin >> courseId;
+                            course.deleteCourse(courseId);
+                            break;
+                        case 3:
+                            system("cls");
+                            course.courseClearList();
+                            course.readFile("Course.txt");
+                            course.getViewCourse();
+                        case 4:system("cls");
+                            course.courseClearList();
+                            course.readFile("Course.txt");
+                            course.getViewCourse();
+                            cout << "Type CourseID you want to search: ";
+                            cin >> courseId;
+                            Course* foundCourseID = course.searchCourseId(courseId);
+                            system("cls");
+                            if (foundCourseID != nullptr) {
+                                cout << "Course has been found:\n";
+                                cout << foundCourseID->toString() << "\n";
+                            }
+                            else {
+                                cout << "No Course found with CourseId as " << courseId << "\n";
+                            }
+                            break;
+                        }
+                    }
+                    catch (const exception& e)
+                    {
+                        cerr << "Error: " << e.what() << endl;
+                        Sleep(3000);
+                        break;
+                    }
+                    cout << "Select the option:" << endl;
+                    cout << "1.Continue" << endl << "2.Quit" << endl;
+                    cin >> selection;
+                } while (selection == 1);
+                break;
+            case 4:
+            {
+                do
+                {
+                    try
+                    {
+                        system("cls");
+                        MenuFunction(choicef, "Bill");
+                        if (choicef == 0)
+                        {
+                            break;
+                        }
+                        if (choicef < 1 || choicef >4) {
+                            throw invalid_argument("Invalid Input,Type Again");
+                        }
+                        switch (choicef)
+                        {
+                        case 1:
+                            bill.addBill();
+                            system("cls");
+                            bill.billClearList();
+                            bill.readFile("Bill.txt");
+                            bill.getViewBill();
+                            break;
+                        case 2:
+                            system("cls");
+                            bill.billClearList();
+                            bill.readFile("Bill.txt");
+                            bill.getViewBill();
+                            cout << "Type BillID you want to delete: ";
+                            cin >> billId;
+                            bill.deleteBill(billId);
+                            break;
+                        case 3:
+                            system("cls");
+                            bill.billClearList();
+                            bill.readFile("Bill.txt");
+                            bill.getViewBill();
+                            break;
+                        case 4:
+                            system("cls");
+                            bill.billClearList();
+                            bill.readFile("Bill.txt");
+                            bill.getViewBill();
+                            cout << "Type BillID you want to search: ";
+                            cin >> billId;
+                            Bill* foundBillID = bill.searchBillID(billId);
+                            system("cls");
+                            if (foundBillID != nullptr)
+                            {
+                                cout << "Bill has been found:\n";
+                                cout << foundBillID->toString() << "\n";
+                            }
+                            else
+                            {
+                                cout << "No Bill found with BillID as " << billId << "\n";
+                            }
+                            break;
+                        }
+                    }
+                    catch (const exception& e)
+                    {
+                        cerr << "Error: " << e.what() << endl;
+                        Sleep(3000);
+                        break;
+                    }
+                    cout << "Select the option:" << endl;
+                    cout << "1.Continue" << endl << "2.Quit" << endl;
+                    cin >> selection;
+                } while (selection == 1);
+
+                break;
             }
-            while (selection == 1);
-            break;
-        case 4:
-        {
-            do
+            case 5:
             {
-                system("cls");
-                MenuFunction(choicef, "Bill");
-                switch (choicef)
+                do
                 {
-                case 1:
-                    bill.addBill();
-                    system("cls");
-                    bill.billClearList();
-                    bill.readFile("Bill.txt");
-                    bill.getViewBill();
-                    break;
-                case 2:
-                    system("cls");
-                    bill.billClearList();
-                    bill.readFile("Bill.txt");
-                    bill.getViewBill();
-                    cout << "Type BillID you want to delete: ";
-                    cin >> billId; 
-                    bill.deleteBill(billId);
-                    break;
-                case 3:
-                    system("cls");
-                    bill.billClearList();
-                    bill.readFile("Bill.txt");
-                    bill.getViewBill();
-                    break;
-                case 4:
-                    system("cls");
-                    bill.billClearList();
-                    bill.readFile("Bill.txt");
-                    bill.getViewBill();
-                    cout << "Type BillID you want to search: ";
-                    cin >> billId;
-                    Bill* foundBillID = bill.searchBillID(billId);
-                    system("cls");
-                    if (foundBillID != nullptr)
+                    try
                     {
-                        cout << "Bill has been found:\n";
-                        cout << foundBillID->toString() << "\n";
+                        system("cls");
+                        MenuFunction(choicef, "Assignment");
+                        if (choicef == 0)
+                        {
+                            break;
+                        }
+                        if (choicef < 1 || choicef >4) {
+                            throw invalid_argument("Invalid Input,Type Again");
+                        }
+                        switch (choicef)
+                        {
+                        case 1:
+                            system("cls");
+                            assign.inputAssignment(assign);
+                            assign.assignmentClearList();
+                            assign.readFile("Assignment.txt");
+                            assign.getViewAssignment();
+                            break;
+                        case 2:
+                            system("cls");
+                            assign.assignmentClearList();
+                            assign.readFile("Assignment.txt");
+                            assign.getViewAssignment();
+                            cout << "Type the Task Id to delete ";
+                            cin >> taskId;
+                            assign.removeAssignment(taskId);
+                            break;
+                        case 3:
+                            system("cls");
+                            assign.assignmentClearList();
+                            assign.readFile("Assignment.txt");
+                            assign.getViewAssignment();
+                            break;
+                        case 4:
+                            system("cls");
+                            assign.assignmentClearList();
+                            assign.readFile("Assignment.txt");
+                            assign.getViewAssignment();
+                            cout << "Type the task ID you want to search ";
+                            cin >> taskId;
+                            Assignment* foundTaskID = assign.searchAssignment(taskId);
+                            system("cls");
+                            if (foundTaskID != nullptr)
+                            {
+                                cout << "Assignment has been found:\n";
+                                cout << foundTaskID->toString() << "\n";
+                            }
+                            else
+                            {
+                                cout << "No Assignment found with BillID as " << taskId << "\n";
+                            }
+                            break;
+                        }
                     }
-                    else
+                    catch (const exception& e)
                     {
-                        cout << "No Bill found with BillID as " << billId << "\n";
+                        cerr << "Error: " << e.what() << endl;
+                        Sleep(3000);
+                        break;
                     }
-                    break;
-                }
-
-                cout << "Select the option:" << endl;
-                cout << "1.Continue" << endl << "2.Quit" << endl;
-                cin >> selection;
-            } while (selection == 1);
-
-            break;
+                    cout << "Select the option:" << endl;
+                    cout << "1.Continue" << endl << "2.Quit" << endl;
+                    cin >> selection;
+                } while (selection == 1);
+            }
+            case 6:
+                do
+                {
+                    try
+                    {
+                        system("cls");
+                        MenuFunction(choicef, "Management");
+                        if (choicef == 0)
+                        {
+                            break;
+                        }
+                        if (choicef < 1 || choicef >6) {
+                            throw invalid_argument("Invalid Input,Type Again");
+                        }
+                        switch (choicef)
+                        {
+                        case 1:
+                            system("cls");
+                            mg.addStudent();
+                            mg.clearList();
+                            mg.readFileStudent("Student.txt");
+                            mg.getViewFromFile("Student.txt");
+                            break;
+                        case 2:
+                            system("cls");
+                            mg.clearList();
+                            mg.readFileStudent("Student.txt");
+                            mg.getViewFromFile("Student.txt");
+                            cout << "Type StudentID you want to delete: ";
+                            cin >> studentId;
+                            mg.deleteStudent(studentId);
+                        case 3:
+                            system("cls");
+                            mg.clearList();
+                            mg.readFileStudent("Student.txt");
+                            mg.getViewFromFile("Student.txt");
+                            break;
+                        case 4:
+                            system("cls");
+                            mg.addTeacher();
+                            mg.clearList();
+                            mg.readFileTeacher("Teacher.txt");
+                            mg.getViewFromFile("Teacher.txt");
+                            break;
+                        case 5:
+                            system("cls");
+                            mg.clearList();
+                            mg.readFileTeacher("Teacher.txt");
+                            mg.getViewFromFile("Teacher.txt");
+                            cout << "Type TeacherID you want to delete: ";
+                            cin >> teacherId;
+                            mg.deleteTeacher(teacherId);
+                            break;
+                        case 6:
+                            system("cls");
+                            mg.clearList();
+                            mg.readFileStudent("Teacher.txt");
+                            mg.getViewFromFile("Teacher.txt");
+                            break;
+                        }
+                    }
+                    catch (const exception& e)
+                    {
+                        cerr << "Error: " << e.what() << endl;
+                        Sleep(3000);
+                        break;
+                    }
+                    cout << "Select the option:" << endl;
+                    cout << "1.Continue" << endl << "2.Quit" << endl;
+                    cin >> selection;
+                    if (selection == 0)
+                    {
+                        break;
+                    }
+                } while (selection == 1);
+            }
+            }
         }
-        case 5:
+        catch (const exception& e)
         {
-            do
-            {
-                system("cls");
-                MenuFunction(choicef, "Assignment");
-                switch (choicef)
-                {
-                case 1:
-                    system("cls");
-                    assign.inputAssignment(assign);
-                    assign.assignmentClearList();
-                    assign.readFile("Assignment.txt");
-                    assign.getViewAssignment();
-                    break;
-                case 2:
-                    system("cls");
-                    assign.assignmentClearList();
-                    assign.readFile("Assignment.txt");
-                    assign.getViewAssignment();
-                    cout << "Type the Task Id to delete ";
-                    cin >> taskId;
-                    assign.removeAssignment(taskId);
-                    break;
-                case 3:
-                    system("cls");
-                    assign.assignmentClearList();
-                    assign.readFile("Assignment.txt");
-                    assign.getViewAssignment();
-                    break;
-                case 4:
-                    system("cls");
-                    assign.assignmentClearList();
-                    assign.readFile("Assignment.txt");
-                    assign.getViewAssignment();
-                    cout << "Type the task ID you want to search ";
-                    cin >> taskId;
-                    Assignment* foundTaskID = assign.searchAssignment(taskId);
-                    system("cls");
-                    if (foundTaskID != nullptr)
-                    {
-                        cout << "Assignment has been found:\n";
-                        cout << foundTaskID->toString() << "\n";
-                    }
-                    else
-                    {
-                        cout << "No Assignment found with BillID as " << taskId << "\n";
-                    }
-                    break;
-                }
-                cout << "Select the option:" << endl;
-                cout << "1.Continue" << endl << "2.Quit" << endl;
-                cin >> selection;
-            } while (selection == 1);
-        }
-        case 6:
-            do 
-            {
-                system("cls");
-                MenuFunction(choicef, "Management");
-                switch (choicef)
-                {
-                case 1:
-                    system("cls");
-                    mg.addStudent();
-                    mg.clearList();
-                    mg.readFileStudent("Student.txt");
-                    mg.getViewFromFile("Student.txt");
-                    break;
-                case 2:
-                    system("cls");
-                    mg.clearList();
-                    mg.readFileStudent("Student.txt");
-                    mg.getViewFromFile("Student.txt");
-                    cout << "Type StudentID you want to delete: ";
-                    cin >> studentId;
-                    mg.deleteStudent(studentId);
-                case 3:
-                    system("cls");
-                    mg.clearList();
-                    mg.readFileStudent("Student.txt");
-                    mg.getViewFromFile("Student.txt");
-                    break;
-                case 4:
-                    system("cls");
-                    mg.addTeacher();
-                    mg.clearList();
-                    mg.readFileTeacher("Teacher.txt");
-                    mg.getViewFromFile("Teacher.txt");
-                    break;
-                case 5:
-                    system("cls");
-                    mg.clearList();
-                    mg.readFileTeacher("Teacher.txt");
-                    mg.getViewFromFile("Teacher.txt");
-                    cout << "Type TeacherID you want to delete: ";
-                    cin >> teacherId;
-                    mg.deleteTeacher(teacherId);
-                    break;
-                case 6:
-                    system("cls");
-                    mg.clearList();
-                    mg.readFileStudent("Teacher.txt");
-                    mg.getViewFromFile("Teacher.txt");
-                    break;
-                }
-                cout << "Select the option:" << endl;
-                cout << "1.Continue" << endl << "2.Quit" << endl;
-                cin >> selection;
-            } while (selection == 1);
+            cerr << "Error: " << e.what() << endl;
+            Sleep(3000);
         }
     }
+    while (choice != 0);
     return 0;
 }
