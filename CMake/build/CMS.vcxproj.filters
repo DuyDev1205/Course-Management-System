@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\GitLab\Course-Management-System\CMake\CourseManagementSystem\Course Management System.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitLab\Course-Management-System\CMake\CourseManagementSystem\Person.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitLab\Course-Management-System\CMake\CourseManagementSystem\Student.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitLab\Course-Management-System\CMake\CourseManagementSystem\Teacher.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitLab\Course-Management-System\CMake\CourseManagementSystem\Assignment.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitLab\Course-Management-System\CMake\CourseManagementSystem\Bill.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitLab\Course-Management-System\CMake\CourseManagementSystem\Course.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\GitLab\Course-Management-System\CMake\CourseManagementSystem\Management.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\GitLab\Course-Management-System\CMake\CourseManagementSystem\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{EEA5087F-6A8A-3422-9588-39BD4245FFA9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

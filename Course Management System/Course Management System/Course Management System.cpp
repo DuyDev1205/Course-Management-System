@@ -8,6 +8,7 @@
 #include "Course.h"
 #include "Bill.h"
 #include "Assignment.h"
+#include "Management.h"
 using namespace std;
 void Menu(int& choice)
 {
@@ -17,6 +18,7 @@ void Menu(int& choice)
     cout << "3. Course\n";
     cout << "4. Receiption\n";
     cout << "5. Assignment\n";
+    cout << "6. Management\n";
     cout << "0. Exit\n";
     cout << "====================\n";
     cout << "Choose function: ";
@@ -27,10 +29,8 @@ void MenuFunction(int& choicef,string role)
     if (role == "Student")
     {
         cout << "======= Menu =======\n";
-        cout << "1. Add\n";
-        cout << "2. Delete by StudentID\n";
-        cout << "3. ViewAll\n";
-        cout << "4. Search\n";
+        cout << "1. ViewAll\n";
+        cout << "2. Search\n";
         cout << "0. Exit\n";
         cout << "====================\n";
         cout << "Choose function: ";
@@ -39,10 +39,8 @@ void MenuFunction(int& choicef,string role)
     else if (role == "Teacher")
     {
         cout << "======= Menu =======\n";
-        cout << "1. Add\n";
-        cout << "2. Delete by TeacherID\n";
-        cout << "3. ViewAll\n";
-        cout << "4. Search\n";
+        cout << "1. ViewAll\n";
+        cout << "2. Search\n";
         cout << "0. Exit\n";
         cout << "====================\n";
         cout << "Choose function: ";
@@ -77,8 +75,22 @@ void MenuFunction(int& choicef,string role)
         cout << "======= Menu =======\n";
         cout << "1. Add Assignment for Student\n";
         cout << "2. Delete Assignment by TaskID\n";
-        cout << "3. GetAll\n";
+        cout << "3. ViewAll\n";
         cout << "4. Search\n";
+        cout << "0. Exit\n";
+        cout << "====================\n";
+        cout << "Choose function: ";
+        cin >> choicef;
+    }
+    else if (role =="Management")
+    {
+        cout << "======= Menu =======\n";
+        cout << "1. Add Student\n";
+        cout << "2. Delete by StudentID\n";
+        cout << "3. View Student List\n";
+        cout << "4. Add Teacher\n";
+        cout << "5. Delete by TeacherID\n";
+        cout << "6. View Teacher List\n";
         cout << "0. Exit\n";
         cout << "====================\n";
         cout << "Choose function: ";
@@ -95,6 +107,7 @@ int main()
     Course course;
     Bill bill;
     Assignment assign;
+    Management mg;
     int choice, choicef,selection;
     string studentId,teacherId,courseId,billId,taskId;
     Menu(choice);
@@ -110,28 +123,11 @@ int main()
                 {
                 case 1:
                     system("cls");
-                    st.addStudent(st);
-                    system("cls");
                     st.clearStudentList(); 
                     st.readFile("Student.txt");
                     st.getViewStudent();
                     break;
                 case 2:
-                    system("cls");
-                    st.clearStudentList(); 
-                    st.readFile("Student.txt");
-                    st.getViewStudent();
-                    cout << "Type StudentID you want to delete: ";
-                    cin >> studentId;
-                    st.deleteStudent(studentId);
-                    break;
-                case 3:
-                    system("cls");
-                    st.clearStudentList(); 
-                    st.readFile("Student.txt");
-                    st.getViewStudent();
-                    break;
-                case 4:
                     system("cls");
                     st.clearStudentList(); 
                     st.readFile("Student.txt");
@@ -163,28 +159,12 @@ int main()
                 switch (choicef)
                 {
                 case 1:
-                    teach.addTeacher();
                     system("cls");
                     teach.clearTeacherList();
                     teach.readFile("Teacher.txt");
                     teach.getViewTeacher();
                     break;
                 case 2:
-                    system("cls");
-                    teach.clearTeacherList();
-                    teach.readFile("Teacher.txt");
-                    teach.getViewTeacher();
-                    cout << "Type TeacherID you want to delete: ";
-                    cin >> teacherId ;
-                    teach.deleteTeacher(teacherId);
-                    break;
-                case 3:
-                    system("cls");
-                    teach.clearTeacherList();
-                    teach.readFile("Teacher.txt");
-                    teach.getViewTeacher();
-                    break;
-                case 4:
                     system("cls");
                     teach.clearTeacherList();
                     teach.readFile("Teacher.txt");
@@ -375,8 +355,62 @@ int main()
                 cin >> selection;
             } while (selection == 1);
         }
+        case 6:
+            do 
+            {
+                system("cls");
+                MenuFunction(choicef, "Management");
+                switch (choicef)
+                {
+                case 1:
+                    system("cls");
+                    mg.addStudent();
+                    mg.clearList();
+                    mg.readFileStudent("Student.txt");
+                    mg.getViewFromFile("Student.txt");
+                    break;
+                case 2:
+                    system("cls");
+                    mg.clearList();
+                    mg.readFileStudent("Student.txt");
+                    mg.getViewFromFile("Student.txt");
+                    cout << "Type StudentID you want to delete: ";
+                    cin >> studentId;
+                    mg.deleteStudent(studentId);
+                case 3:
+                    system("cls");
+                    mg.clearList();
+                    mg.readFileStudent("Student.txt");
+                    mg.getViewFromFile("Student.txt");
+                    break;
+                case 4:
+                    system("cls");
+                    mg.addTeacher();
+                    mg.clearList();
+                    mg.readFileTeacher("Teacher.txt");
+                    mg.getViewFromFile("Teacher.txt");
+                    break;
+                case 5:
+                    system("cls");
+                    mg.clearList();
+                    mg.readFileTeacher("Teacher.txt");
+                    mg.getViewFromFile("Teacher.txt");
+                    cout << "Type TeacherID you want to delete: ";
+                    cin >> teacherId;
+                    mg.deleteTeacher(teacherId);
+                    break;
+                case 6:
+                    system("cls");
+                    mg.clearList();
+                    mg.readFileStudent("Teacher.txt");
+                    mg.getViewFromFile("Teacher.txt");
+                    break;
+                }
+                cout << "Select the option:" << endl;
+                cout << "1.Continue" << endl << "2.Quit" << endl;
+                cin >> selection;
+            } while (selection == 1);
         }
     }
     return 0;
 }
-
